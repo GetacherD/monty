@@ -8,7 +8,7 @@ void pchar(stack_t **head, unsigned int linum)
 {
 	int tmp;
 
-	if (!head || !(*head))
+	if (!(*head))
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", linum);
 		exit(EXIT_FAILURE);
