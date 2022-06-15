@@ -10,13 +10,13 @@ void pchar(stack_t **head, unsigned int linum)
 
 	if (!head || !(*head))
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", linum);
+		dprintf(STDOUT_FILENO, "L%u: can't pchar, stack empty\n", linum);
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*head)->n;
 	if (!isascii(tmp))
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n", linum);
+		dprintf(STDOUT_FILENO, "L%u: can't pchar, value out of range\n", linum);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", tmp);
