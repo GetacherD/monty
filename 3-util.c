@@ -17,7 +17,7 @@ void pchar(stack_t **head, unsigned int linum)
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*head)->n;
-	if (tmp <= 32 || tmp >= 127)
+	if (tmp  < 0 || tmp > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", linum);
 		if (line)
