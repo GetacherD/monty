@@ -12,6 +12,7 @@ int _is_digit(char *s)
 	{
 		if (s[i] < 48 || s[i] > 57)
 			return (0);
+		i++;
 	}
 	return (1);
 }

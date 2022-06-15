@@ -10,16 +10,16 @@ void pchar(stack_t **head, unsigned int linum)
 
 	if (!head || !(*head))
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", linum);
+		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", linum);
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*head)->n;
 	if (!isascii(tmp))
 	{
-		fprintf(stderr, "L%u: can't pchar, value out of range\n", linum);
+		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n", linum);
 		exit(EXIT_FAILURE);
 	}
-	fprintf(stdout, "%c\n", tmp);
+	printf("%c\n", tmp);
 }
 /**
  * pstr - print stack as string
