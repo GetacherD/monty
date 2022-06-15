@@ -51,8 +51,12 @@ int exec_line(stack_t **head, unsigned int line_num)
 {
 
 	char **argv = NULL;
+	int index = 0;
 
 	line[_strlen(line) - 2] = '\0';
+	while (line[index] && line[index] != '#')
+		index++;
+	line[index] = '\0';
 	argv = (char **)_strtok(line, argv, " ");
 	if (line[0] == '#' || _strcmp(argv[0], "nop") == 0)
 	{
@@ -77,6 +81,10 @@ int exec_line(stack_t **head, unsigned int line_num)
 	free_argv(argv);
 	return (1);
 }
+/**
+ * free_stack - free stack memory on exit
+ * @head: stack top
+ */
 void free_stack(stack_t **head)
 {
 	stack_t *cur;
@@ -118,8 +126,6 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		if (line[0] == '#')
-			continue;
 		exec_line(&head, line_num);
 		line_num++;
 	}

@@ -39,7 +39,7 @@ void add_end(stack_t **head, int data, unsigned int linum)
 	if (!cur)
 	{
 		push(head, data, linum);
-		if(line)
+		if (line)
 			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
