@@ -71,7 +71,7 @@ int exec_line(stack_t **head, unsigned int line_num)
 	}
 	else if (!f(argv[0]))
 	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_num, argv[0]);
+		fprintf(stdout, "L%u: unknown instruction %s\n", line_num, argv[0]);
 		if (line)
 			free(line);
 		free_argv(argv);
