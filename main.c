@@ -56,7 +56,8 @@ int exec_line(stack_t **head, unsigned int line_num)
 	line[_strlen(line) - 2] = '\0';
 	while (line[index] && line[index] != '#')
 		index++;
-	line[index] = '\0';
+	if (index != 0)
+		line[index] = '\0';
 	argv = (char **)_strtok(line, argv, " ");
 	if (line[0] == '#' || _strcmp(argv[0], "nop") == 0)
 	{
