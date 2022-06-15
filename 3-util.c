@@ -47,7 +47,7 @@ void rotl(stack_t **head, unsigned int __attribute__((unused))linum)
 {
 	int data;
 
-	if (!(!(*head) || !((*head)->next)))
+	if ((*head) && ((*head)->next))
 	{
 		data = (*head)->n;
 		pop(head, linum);
@@ -64,7 +64,7 @@ void rotr(stack_t **head, unsigned int __attribute__((unused))linum)
 	int data;
 	stack_t *cur;
 
-	if (!(!(*head) || !((*head)->next)))
+	if ((*head) &&((*head)->next))
 	{
 		cur = *head;
 		while (cur->next)

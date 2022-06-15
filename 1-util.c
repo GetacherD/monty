@@ -39,26 +39,26 @@ void add_end(stack_t **head, int data, unsigned int linum)
 	if (!cur)
 	{
 		push(head, data, linum);
-		if (line)
-			free(line);
-		free_stack(head);
-		exit(EXIT_FAILURE);
 	}
-	newNode = malloc(sizeof(stack_t));
-	if (!newNode)
+	else
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		if (line)
-			free(line);
-		free_stack(head);
-		exit(EXIT_FAILURE);
+		newNode = malloc(sizeof(stack_t));
+		if (!newNode)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			if (line)
+				free(line);
+			free_stack(head);
+			exit(EXIT_FAILURE);
+		}
+		
+		newNode->next = NULL;
+		newNode->n = data;
+		while (cur->next)
+			cur = cur->next;
+		cur->next = newNode;
+		newNode->prev = cur;
 	}
-	newNode->next = NULL;
-	newNode->n = data;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = newNode;
-	newNode->prev = cur;
 }
 /**
  * pop - remove data from top of stack
