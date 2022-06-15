@@ -118,6 +118,8 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
+		if (line[0] == '#')
+			continue;
 		exec_line(&head, line_num);
 		line_num++;
 	}
