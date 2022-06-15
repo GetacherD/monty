@@ -31,7 +31,7 @@ void pstr(stack_t **head, unsigned int __attribute__((unused))linum)
 	stack_t *cur;
 
 	cur = *head;
-	while (cur && (cur->n) != 0 && isascii(val))
+	while (cur && (cur->n) != 0 && isascii(cur->n))
 	{
 		printf("%c", cur->n);
 		cur = cur->next;
