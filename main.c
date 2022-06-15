@@ -17,7 +17,7 @@ void __push(char **argv, unsigned int linum, stack_t **head)
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
-	if (atoi(argv[1]) == 0 && !(argv[1][0] == '0' && argv[1][1] == '\0'))
+	if (atoi(argv[1]) == 0 && argv[1][0] != '0')
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", linum);
 		if (line)
