@@ -39,9 +39,11 @@ void pstr(stack_t **head, unsigned int __attribute__((unused))linum)
 
 	cur = *head;
 	val = (*head)->n;
-	while (cur && cur->n && val >= 0 && val <= 127)
+	while (cur && val >= 0 && val <= 127)
 	{
 		printf("%c", cur->n);
+		if (cur->n == 0)
+			break;
 		cur = cur->next;
 		val = cur->n;
 	}
