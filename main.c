@@ -81,11 +81,11 @@ void free_stack(stack_t **head)
 	stack_t *cur;
 
 	cur = *head;
-	while (cur)
+	while (*head)
 	{
-		cur = (*head)->next;
-		free(*head);
-		*head = cur;
+		*head = (*head)->next;
+		free(cur);
+		cur = *head;
 	}
 }
 
@@ -117,7 +117,7 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		if (line[0] == '#')
+		if (line[0] == '#' || line[0] == '\n')
 			continue;
 		exec_line(&head, line_num);
 		line_num++;
