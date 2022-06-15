@@ -19,7 +19,7 @@ void pchar(stack_t **head, unsigned int linum)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", linum);
 		exit(EXIT_FAILURE);
 	}
-	fprintf(stdout, "%c\n", tmp);
+	printf("%c\n", tmp);
 }
 /**
  * pstr - print stack as string
