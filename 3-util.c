@@ -89,5 +89,8 @@ void pall(stack_t **head, unsigned int __attribute__((unused))linum)
 	{
 		printf("%d\n", cur->n);
 		cur = cur->next;
+		if (cur == *head)
+			return;
+
 	}
 }
