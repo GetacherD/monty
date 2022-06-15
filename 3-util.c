@@ -29,17 +29,12 @@ void pchar(stack_t **head, unsigned int linum)
 void pstr(stack_t **head, unsigned int __attribute__((unused))linum)
 {
 	stack_t *cur;
-	int val;
 
 	cur = *head;
-	val = (*head)->n;
-	while (cur && val >= 0 && val <= 127)
+	while (cur && (cur->n) != 0 && isascii(val))
 	{
 		printf("%c", cur->n);
-		if (cur->n == 0)
-			break;
 		cur = cur->next;
-		val = cur->n;
 	}
 	printf("\n");
 }
