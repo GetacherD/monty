@@ -14,7 +14,7 @@ void pchar(stack_t **head, unsigned int linum)
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*head)->n;
-	if (tmp  < 0 || tmp > 127)
+	if (!isascii(tmp))
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", linum);
 		exit(EXIT_FAILURE);
