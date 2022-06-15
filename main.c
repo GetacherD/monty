@@ -8,16 +8,7 @@
  */
 void __push(char **argv, unsigned int linum, stack_t **head)
 {
-	if (!argv[1])
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", linum);
-		if (line)
-			free(line);
-		free_argv(argv);
-		free_stack(head);
-		exit(EXIT_FAILURE);
-	}
-	if (atoi(argv[1]) == 0 && argv[1][0] != '0')
+	if (!argv[1] || !_is_digit(argv[1]))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", linum);
 		if (line)
@@ -71,7 +62,7 @@ int exec_line(stack_t **head, unsigned int line_num)
 	}
 	else if (!f(argv[0]))
 	{
-		fprintf(stdout, "L%u: unknown instruction %s\n", line_num, argv[0]);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_num, argv[0]);
 		if (line)
 			free(line);
 		free_argv(argv);

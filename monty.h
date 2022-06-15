@@ -45,6 +45,7 @@ typedef struct instruction_s
 EXTERN char *line;
 void free_stack(stack_t **head);
 void free_argv(char **argv);
+int _is_digit(char *s);
 void push(stack_t **head, int data, unsigned int linum);
 void add_end(stack_t **head, int data, unsigned int linum);
 void pop(stack_t **head, unsigned int linum);

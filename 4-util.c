@@ -1,5 +1,22 @@
 #include "monty.h"
 /**
+ * _is_digit -check if string contain only digits
+ * @s: string to be checked
+ * Return: 1 if digit only else 0
+ */
+int _is_digit(char *s)
+{
+	int i  = 0;
+
+	while (s[i] && s[i] != '#')
+	{
+		if (s[i] < 48 || s[i] > 57)
+			return (0);
+	}
+	return (1);
+}
+
+/**
  * nop - no operation
  */
 void nop(void)
