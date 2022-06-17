@@ -59,3 +59,20 @@ void (*f(char *opcode))(stack_t **stack, unsigned int line_num)
 	return (NULL);
 
 }
+/**
+ * is_comment - check if line is comment
+ * @s: line
+ * Return: 1 if comment else 0
+ */
+int is_comment(char *s)
+{
+	int i  = 0;
+
+	while (s[i] && s[i] != '#' && s[i] == ' ')
+	{
+		i++;
+	}
+	if (s[i] == '#')
+		return (1);
+	return (0);
+}

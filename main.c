@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		if (line[0] == '#' || line[0] == '\n')
+		if (is_comment(line) || line[0] == '\n')
 			continue;
 		exec_line(&head, line_num, &line);
 		line_num++;

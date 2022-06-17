@@ -62,7 +62,7 @@ void pall(stack_t **head, unsigned int __attribute__((unused))linum);
 void nop(void);
 void (*f(char *opcode))(stack_t **stack, unsigned int line_num);
 void __push(char **argv, unsigned int linum, stack_t **head);
-
+int is_comment(char *s);
 /*
 * string functions
 */
