@@ -9,7 +9,11 @@ int _is_digit(char *s)
 	int i  = 0;
 
 	if (s[0] && s[0] == '-')
+	{
+		if (s[1] && s[1] == '0')
+			return (0);
 		i++;
+	}
 	while (s[i] && s[i] != '#')
 	{
 		if (s[i] < 48 || s[i] > 57)
@@ -77,4 +81,21 @@ int is_comment(char *s)
 	if (s[i] == '#')
 		return (1);
 	return (0);
+}
+/**
+ * is_empty - check if line is comment
+ * @s: line
+ * Return: 1 if comment else 0
+ */
+int is_empty(char *s)
+{
+	int i  = 0;
+
+	while (s[i] && s[i] != '\n')
+	{
+		if (s[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }
