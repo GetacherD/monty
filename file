@@ -1,8 +1,8 @@
-     #push 76
-pchar
-push 78
-pchar
-push 97
-pchar
-push 67
-pchar
+push 4
+push 7
+push 48
+push 65
+push 66
+push 127
+push 127
+pstr

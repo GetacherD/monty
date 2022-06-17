@@ -14,7 +14,7 @@ void pchar(stack_t **head, unsigned int linum)
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*head)->n;
-	if (!isascii(tmp))
+	if (tmp <= 0 || tmp >= 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", linum);
 		exit(EXIT_FAILURE);
@@ -31,7 +31,7 @@ void pstr(stack_t **head, unsigned int __attribute__((unused))linum)
 	stack_t *cur;
 
 	cur = *head;
-	while (cur && (cur->n) != 0 && isascii(cur->n))
+	while (cur && (cur->n) > 0 && cur->n < 127)
 	{
 		printf("%c", cur->n);
 		cur = cur->next;
