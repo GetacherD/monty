@@ -56,7 +56,7 @@ void wordcopy(char *s, char **p, char *sep)
 	i = j = k = 0;
 	while (s[i] && is_in(s[i], sep))
 		i++;
-	while (s[i] && s[i] != '#')
+	while (s[i])
 	{
 		if (is_in(s[i], sep))
 		{
@@ -67,7 +67,7 @@ void wordcopy(char *s, char **p, char *sep)
 				i++;
 
 		}
-		else if ((s[i + 1] == '\0' || s[i + 1] == '#') && (!(is_in(s[i], sep))))
+		else if ((s[i + 1] == '\0') && (!(is_in(s[i], sep))))
 		{
 			p[j][k] = s[i];
 			k = 0;
@@ -102,11 +102,11 @@ char *_strtok(char *s, char **p, char *sep)
 		return (NULL);
 	while (s[i] && (is_in(s[i], sep)))
 		i++;
-	while (s[i] && s[i] != '#')
+	while (s[i])
 	{
-		if (is_in(s[i], sep) || s[i + 1] == '\0' || s[i + 1] == '#')
+		if (is_in(s[i], sep) || s[i + 1] == '\0')
 		{
-			if (s[i + 1] == '\0' || s[i + 1] == '#')
+			if (s[i + 1] == '\0')
 				k++;
 			p[j] = malloc(sizeof(char) * (k + 1));
 			if (p[j] == NULL)
