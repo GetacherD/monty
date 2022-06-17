@@ -1,12 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
 #define  _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdarg.h>
 #include <ctype.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,11 +40,7 @@ typedef struct instruction_s
 /*
 * stack functions
 */
-#ifndef EXTERN
-#define EXTERN extern
-#endif
 
-EXTERN char *line;
 void free_stack(stack_t **head);
 void free_argv(char **argv);
 int _is_digit(char *s);
@@ -77,4 +75,5 @@ int _memset(char *mem, size_t size);
 size_t len_from_to(char *p, int start, char stop);
 int _strcmp_index(char *src, char *dest);
 void _strcpy_index(char *src, char *dest, size_t start_index);
+
 #endif

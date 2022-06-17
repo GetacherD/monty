@@ -9,8 +9,6 @@ void sub(stack_t **head, unsigned int linum)
 	if (!(*head) || !((*head)->next))
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -27,8 +25,6 @@ void mul(stack_t **head, unsigned int linum)
 	if (!(*head) || !((*head)->next))
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -45,16 +41,12 @@ void mod(stack_t **head, unsigned int linum)
 	if (!(*head) || !((*head)->next))
 	{
 		fprintf(stderr, "L%u: can't mod, stack too short\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	if (((*head)->n) == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -71,16 +63,12 @@ void _div(stack_t **head, unsigned int linum)
 	if (!(*head) || !((*head)->next))
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	if (((*head)->n) == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -97,8 +85,6 @@ void pint(stack_t **head, unsigned int linum)
 	if (!(*head))
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}

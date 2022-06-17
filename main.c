@@ -11,8 +11,6 @@ void __push(char **argv, unsigned int linum, stack_t **head)
 	if (!argv[1] || !_is_digit(argv[1]))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", linum);
-		if (line)
-			free(line);
 		free_argv(argv);
 		free_stack(head);
 		exit(EXIT_FAILURE);
@@ -36,19 +34,20 @@ void free_argv(char **argv)
  * exec_line - execute one line
  * @head: stack top
  * @line_num: line number
+ * @line: line pointer
  * Return: 1 if succcess else EXIT FAILURE
  */
-int exec_line(stack_t **head, unsigned int line_num)
+int exec_line(stack_t **head, unsigned int line_num, char **line)
 {
 
 	char **argv = NULL;
 	int index = 0;
 
-	line[_strlen(line) - 2] = '\0';
-	while (line[index] && line[index] != '#')
+	(*line)[_strlen((*line)) - 2] = '\0';
+	while ((*line)[index] && (*line)[index] != '#')
 		index++;
-	line[index] = '\0';
-	argv = (char **)_strtok(line, argv, " ");
+	(*line)[index] = '\0';
+	argv = (char **)_strtok((*line), argv, " ");
 	if (strcmp(argv[0], "nop") == 0)
 	{
 		free_argv(argv);
@@ -62,8 +61,8 @@ int exec_line(stack_t **head, unsigned int line_num)
 	else if (!f(argv[0]))
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_num, argv[0]);
-		if (line)
-			free(line);
+		if (*line)
+			free(*line);
 		free_argv(argv);
 		free_stack(head);
 		exit(EXIT_FAILURE);
@@ -102,8 +101,8 @@ int main(int argc, char **argv)
 	FILE *fp;
 	size_t len = 0;
 	ssize_t read;
+	char *line = NULL;
 
-	line = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -119,7 +118,7 @@ int main(int argc, char **argv)
 	{
 		if (line[0] == '#' || line[0] == '\n')
 			continue;
-		exec_line(&head, line_num);
+		exec_line(&head, line_num, &line);
 		line_num++;
 	}
 	fclose(fp);

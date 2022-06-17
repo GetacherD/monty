@@ -13,8 +13,6 @@ void push(stack_t **head, int data, unsigned int __attribute__((unused))linum)
 	if (!newNode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -37,21 +35,16 @@ void add_end(stack_t **head, int data, unsigned int linum)
 
 	cur = *head;
 	if (!cur)
-	{
 		push(head, data, linum);
-	}
 	else
 	{
 		newNode = malloc(sizeof(stack_t));
 		if (!newNode)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
-			if (line)
-				free(line);
 			free_stack(head);
 			exit(EXIT_FAILURE);
 		}
-		
 		newNode->next = NULL;
 		newNode->n = data;
 		while (cur->next)
@@ -72,8 +65,6 @@ void pop(stack_t **head, unsigned int linum)
 	if ((!head) || !(*head))
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -95,8 +86,6 @@ void swap(stack_t **head, unsigned int linum)
 	if (!(*head) || !((*head)->next))
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -114,8 +103,6 @@ void add(stack_t **head, unsigned int linum)
 	if (!(*head) || !((*head)->next))
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", linum);
-		if (line)
-			free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
